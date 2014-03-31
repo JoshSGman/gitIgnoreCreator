@@ -1,0 +1,17 @@
+{
+  "name": "gitIgnoreCreator",
+  "version": "0.0.0",
+  "dependencies": {
+    "jQuery": "~2.1.0",
+    "angular": "~1.2.15",
+    "underscore": "~1.6.0",
+    "ng-file-upload": "~1.3.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='gitignore'>
+	<head>
+		<title>Git Ignore Generator</title>
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono|Revalia|Droid+Sans+Mono|Gochi+Hand|Fredoka+One|Metrophobic|Trocchi|Miltonian+Tattoo|Allerta|Aclonica' rel='stylesheet' type='text/css'>
+		<script src='/bower_components/jQuery/src/jquery.js'></script>
+		<script src='/bower_components/underscore/underscore.js'></script>
+		<script src='/bower_components/ng-file-upload/angular-file-upload-shim.min.js'></script>
+		<script src='/bower_components/angular/angular.min.js'></script>
+		<script src='/bower_components/ng-file-upload/angular-file-upload.min.js'></script> 
+		<script src='/scripts/gitignore.js'></script>
+	</head>
+	<body ng-view ng-controller='mainController'>
+		<h1>The Git Ignore Generator</h1>
+		<br><br><br>
+		<div ng-controller="uploadController">
+		  <input type="text" ng-model="myModelObj">
+		  <input type="file" ng-file-select="onFileSelect($files)" multiple directory webkitdirectory mozdirectory>
+		  <div id='filePaths'>
+		  	<br>
+		  	<div class='filePath' ng-repeat='filePath in filePaths'><input name="fileCheck" value="{{filePath}}" type="checkbox" ng-click=addToGitIgnore(filePath) > : {{filePath}}</div>	
+			  <br/>
+			  <input type='submit' id='generateGitIgnore' value='Generate gitignore file' ng-hide='hideGenerator'>
+			  <div ng-repeat='gitIgnoreSelection in gitIgnoreSelections'>{{gitIgnoreSelection}}</div>
+			</div>
+		</div>
+	</body>
+</html>

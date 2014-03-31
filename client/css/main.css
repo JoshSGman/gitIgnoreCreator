@@ -1,0 +1,57 @@
+/* git ignore css goes here */
+
+/* google fonts included: ;
+font-family: 'Cutive Mono', ;
+font-family: 'Revalia', cursive;
+font-family: 'Droid Sans Mono', ;
+font-family: 'Gochi Hand', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Metrophobic', sans-serif;
+font-family: 'Trocchi', serif;
+font-family: 'Miltonian Tattoo', cursive;
+font-family: 'Allerta', sans-serif;
+font-family: 'Aclonica', sans-serif;
+
+// extra colors used :
+
+rgba(71, 161, 212, 0.9) - light blue
+*/
+
+
+
+/* Global Reset */
+html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video, th, td, tr {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	font-family: 'Droid Sans Mono';
+}
+
+h1 {
+	
+}
+
+/* file drop section*/
+
+.dropFiles {
+	height: 250px;
+	width: 250px;
+	border: 1px solid red;
+}
+
+#filePaths {
+
+}
+
+.filePath {
+
+}
+
