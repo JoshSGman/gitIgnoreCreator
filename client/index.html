@@ -18,11 +18,13 @@
 				$('body').on('click', '.fileAnchor', function(e){
 					e.preventDefault();
 					$(this).find('img').toggleClass('expandRotate');
+					$(this).next().toggleClass('ng-hide');
 				})
 			})
 		</script>
 	</head>
 	<body ng-view ng-controller='mainController'>
+<!-- 		<a href="https://github.com/JoshSGman/gitIgnoreCreator"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a> -->
 		<h1>THE GIT IGNORE GENERATOR</h1>
 		<br>
 		<div ng-controller="uploadController" id='fileUploadDiv'>
@@ -31,19 +33,16 @@
 		  	<input type="file" id='fileUpload' ng-file-select="onFileSelect($files)" multiple directory webkitdirectory mozdirectory>
 			</div>
 
+			<div id='searchDirDiv'> 
+				<input id='searchDir' type='text' ng-model='search.$' placeholder='search for a file or directory'>
+			</div>
+
 		  <ul class='filePaths'>
-		  	<li class='filePath' ng-repeat='value in root' ng-include="'partials/tree.html'"></li>
+		  	<div id='showAllDiv'><button id='showAll'>Show All</button></div>
+		  	<li class='filePath' ng-repeat='value in root | filter:search:strict ' ng-include="'partials/tree.html'"></li>
 			</ul>
 
-			<h2>Git Ignore Generator: </h2>
-
-			<div id='gitIgnoreFiles' >
-				<div id='gitIgnoreFile' ng-repeat='(fullPath, path) in gitIgnoreSelections'>
-
-			  	<span class='ignoredFile' >### {{fullPath}} ###</span><br/>
-			  	{{fullPath}}
-			  </div>
-		  </div>
+			<div ng-include="'partials/gitFile.html'"></div>
 		  <div id='gap'></div>
 		</div>
 		<footer></footer>

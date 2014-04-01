@@ -1,0 +1,21 @@
+<h2 ng-show=nowWhat> <u>Generated Git Ignore</u>: </h2>
+<input type='text' id='customIgnores' placeholder='Add Custom Ignores' ng-show=nowWhat ng-model='customIgnores'>
+<input type='button' value='Add' id='addCustomIgnores' ng-show=nowWhat ng-click=addCustomIgnores(customIgnores)><br/><br/>
+
+<div id='gitIgnoreFiles' >
+	<div class='gitIgnoreFile' ng-repeat='(fullPath, path) in gitIgnoreSelections'>
+
+  	<span class='ignoredFile' >### {{fullPath}} ###</span><br/>
+  	<span class='ignoredPath'>{{fullPath}}</span>
+  </div>
+</div>
+<div id='instructions' ng-show=nowWhat>
+	<h1>Now What?</h1>
+	<ul id='explanation'>
+		<br/>
+		<li>Select the directories/files you want ignored</li><br/>
+		<li>Once you're happy with your selection, create a file called '.gitignore' in your project root directory</li><br/>
+		<li>Select and copy the text under 'Generated Git Ignore', paste it into your newly created file and hit save!</li><br/>
+		<li>Finished</li>
+	</ul>
+</div>

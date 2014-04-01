@@ -33,8 +33,8 @@ html {
 
 body {
 	height: 100%;
-	background-color: rgba(251, 170, 40, 1);
-	font-family: 'Metrophobic', sans-serif;
+	background-color: rgba(251, 170, 40, .8);
+	font-family: 'Allerta', sans-serif;
 	text-align: center;
 	overflow: auto;
 }
@@ -78,13 +78,25 @@ a:visited {
 }
 
 #fileUpload {
-	font-family: 'Droid Sans Mono';
+	font-family: 'Allerta', sans-serif;
 	padding: 10px;
-	margin-left: 40px;
+	margin-left: 75px;
+}
+
+#searchDirDiv{
+
+}
+
+#searchDir {
+	margin-top: 10px;
+	width: 200px;
+	border-radius: 5px;
+	text-align: center;
+	font-family: 'Allerta', sans-serif;
 }
 
 .filePaths {
-	background-color: lightgrey;
+	background-color: rgba(251, 170, 40, .8);
 	text-align: left;
 	margin-top: 10px !important;
 	margin: auto;
@@ -92,6 +104,20 @@ a:visited {
 	border-radius: 5px;
 	height: 300px;
 	width: 600px;
+}
+
+#showAllDiv {
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+#showAll {
+
+	background-color: rgba(251, 170, 40, 1);
+	color: white;
+	border-radius: 5px;
+	border: 2px solid white;
 }
 
 .filePath {
@@ -103,7 +129,9 @@ a:visited {
 	list-style: none;
 }
 
+.directoryUl {
 
+}
 
 .expand {
 	vertical-align: bottom;
@@ -118,20 +146,46 @@ a:visited {
 	-o-transform: rotate(90deg);
 }
 
-#gitIgnoreFileDiv{
-	background-color: lightgrey;
-	width: 600px;
-	margin: auto auto;
+
+#customIgnores {
+	margin-top: 10px;
+	width: 200px;
+	height: 20px;
+	border-radius: 5px;
+	text-align: center;
+	font-family: 'Allerta', sans-serif;
 }
 
-#gitIgnoreFile {
-	margin: auto auto;
+#addCustomIgnores {
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	border-right: 3px solid black;
+	border-bottom: 3px solid black;
+	margin-left: 20px;
+	background-color: rgba(251, 170, 40, .8);
+	color: black;
+	font-family: 'Allerta', sans-serif;
+	font-size: 1em;
+}
+
+#gitIgnoreFiles {
+	width: 500px;
+	margin: auto;
+	overflow: auto;
+}
+
+.gitIgnoreFile {
 	text-align: left;
 	width: 500px;
 	margin-bottom: 10px;
 }
 
-.ignoreFile {
+.ignoredFile {
+	background-color: lightpink;
+}
+
+.ignoredPath {
 
 }
 
@@ -139,6 +193,16 @@ a:visited {
 	height: 50px;
 }
 
+#instructions {
+
+}
+
+#explanation {
+	list-style: upper-roman;
+	width: 400px;
+	margin: auto auto;
+	text-align: left;
+}
 
 footer {
 	height: 50px;
