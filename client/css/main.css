@@ -83,12 +83,11 @@ a:visited {
 	margin-left: 40px;
 }
 
-#filePaths {
+.filePaths {
 	background-color: lightgrey;
 	text-align: left;
 	margin-top: 10px !important;
 	margin: auto;
-	min-height: 0;
 	overflow: auto;
 	border-radius: 5px;
 	height: 300px;
@@ -96,9 +95,15 @@ a:visited {
 }
 
 .filePath {
-	height: 20px;
-	margin: auto auto;
+
 }
+
+.filePath ul {
+	margin-left: 20px;
+	list-style: none;
+}
+
+
 
 .expand {
 	vertical-align: bottom;

@@ -18,72 +18,74 @@ gitignore.controller('mainController', function($scope){
 
 gitignore.controller('uploadController',[ '$scope', '$upload', 'fileOrDir', function($scope, $upload, fileOrDir){
 
-	$scope.filePaths = {};
-	$scope.root = {};
+	$scope.root = [];
+
+	// check exists
+
+	$scope.checkExists = function(currPath, currObj){
+		var verdict = false;
+
+		for (var i = 0; i < currObj.length; i++){
+			if (currObj[i].dir === currPath) {
+				verdict = true;
+				return verdict;
+			}
+		}
+		return verdict;
+	};
+
+	// grab child 
+
+	$scope.grabChild = function(currPath, currObj){
+		for (var i = 0; i < currObj.length; i++){
+			if (currObj[i].dir === currPath) {
+				return currObj[i].children;
+			}
+		}
+	};
+
+	// add children to root obj
+
 
 	$scope.addChild = function(root, filePath){
 		var currObj = root;
 
 		for (var i = 0; i < filePath.length; i++){
-			if (currObj[filePath[i]]) {
-				currObj = currObj[filePath[i]];
+			if (currObj.length && $scope.checkExists(filePath[i], currObj)) {
+				currObj = $scope.grabChild(filePath[i], currObj);
 			} else {
-				currObj[filePath[i]] = {};
-				var temp = currObj[filePath[i]];
-				currObj = temp;
+				currObj.push({
+					dir: filePath[i],
+					children: []
+				});
+				currObj = $scope.grabChild(filePath[i], currObj);
 			}
 		}
 	};
 
-	$scope.showChildren = function(dirname){
-		console.log(dirname);
-		var currRoot = $scope.root;
-		var keys;
-
-		var findDir = function(dirname, currRoot) {
-			if (currRoot[dirname]) {
-				keys = Object.keys(currRoot[dirname]);
-				return;
-			} else {
-				for (var key in currRoot) {
-					findDir(dirname, currRoot[key]);
-				}
-			}
-		};
-
-		findDir(dirname, currRoot);
-
-		if (!keys.length) {
-			return;
-		}
-
-		$scope.dirname = keys;
-		var childTemp = $('<li class=\'filePath\' ng-repeat=\'filePath in '+filePaths.dirname+'\' ng-controller=\'fileController\'><input name="fileCheck" value="{{filePath}}" type="checkbox" ng-click=addToGitIgnore(filePath) ng-model=\'checked\'><a href=\'#\' ng-click=showChildren(filePath) class=\'fileAnchor\'><img class=\'expand\' src=\'/images/expand.png\'>{{filePath}}</a></li>');
-		console.log($(this).find('img'));
-		// $(this).append(childTemp);
-	};
-
-
+	// grab files from upload
 
 	$scope.onFileSelect = function($files) {
-		console.log($files);
 		var rootDir = $files[0].webkitRelativePath.match(/.*\//);
 
 		_.each($files, function(file){
 
 			var fileArr = file.webkitRelativePath.slice(rootDir[0].length).split('/');
+			// var fullPath = file.webkitRelativePath.slice(rootDir[0].length);
 
 			$scope.addChild($scope.root, fileArr);
 
 		});
-		$scope.filePaths = Object.keys($scope.root);
-	};
 
-	
+		console.log($scope.root);
+	};
 
 	$scope.gitIgnoreSelections = {};
 
+
+
 }]);
+
 
 // file controller
 

@@ -12,7 +12,7 @@
 		<script src='/scripts/gitignore.js'></script>
 		<script>
 			$(document).ready(function(){
-				$('body').on('click','.expand',function(e){
+				$('.fileAnchor').on('click','.expand',function(e){
 					$(this).toggleClass('expandRotate')
 				});
 				$('body').on('click', '.fileAnchor', function(e){
@@ -26,21 +26,18 @@
 		<h1>THE GIT IGNORE GENERATOR</h1>
 		<br>
 		<div ng-controller="uploadController" id='fileUploadDiv'>
+
 			<div id='fileUploader'>
 		  	<input type="file" id='fileUpload' ng-file-select="onFileSelect($files)" multiple directory webkitdirectory mozdirectory>
 			</div>
-		  <ul id='filePaths'>
-		  	<br>
-		  	<li class='filePath' ng-repeat='filePath in filePaths' ng-controller='fileController'>
-		  		<input name="fileCheck" value="{{filePath}}" type="checkbox" ng-click=addToGitIgnore(filePath) ng-model='checked'> 
-		  		<a href='#' ng-click=showChildren(filePath) class='fileAnchor'>
-		  		<img class='expand' src='/images/expand.png'> {{filePath}}
-		  		</a>
-		  	</li>	
-			  <br/>
+
+		  <ul class='filePaths'>
+		  	<li class='filePath' ng-repeat='value in root' ng-include="'partials/tree.html'"></li>
 			</ul>
+
 			<h2>Git Ignore Generator: </h2>
-			<div id='gitIgnoreFiles'>
+
+			<div id='gitIgnoreFiles' >
 				<div id='gitIgnoreFile' ng-repeat='gitIgnoreSelection in gitIgnoreSelections'>
 
 			  	<span class='ignoredFile' >### {{gitIgnoreSelection}} ###</span><br/>
