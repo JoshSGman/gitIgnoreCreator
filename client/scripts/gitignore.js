@@ -49,14 +49,17 @@ gitignore.controller('uploadController',[ '$scope', '$upload', 'fileOrDir', func
 
 	$scope.addChild = function(root, filePath){
 		var currObj = root;
+		var path = '';
 
 		for (var i = 0; i < filePath.length; i++){
+			path += i === filePath.length - 1 ? filePath[i] : filePath[i] + '/';
 			if (currObj.length && $scope.checkExists(filePath[i], currObj)) {
 				currObj = $scope.grabChild(filePath[i], currObj);
 			} else {
 				currObj.push({
 					dir: filePath[i],
-					children: []
+					children: [],
+					fullPath: path
 				});
 				currObj = $scope.grabChild(filePath[i], currObj);
 			}
@@ -71,7 +74,10 @@ gitignore.controller('uploadController',[ '$scope', '$upload', 'fileOrDir', func
 		_.each($files, function(file){
 
 			var fileArr = file.webkitRelativePath.slice(rootDir[0].length).split('/');
-			// var fullPath = file.webkitRelativePath.slice(rootDir[0].length);
+
+			if (fileArr[fileArr.length-1] === '.') {
+				fileArr.pop();
+			}
 
 			$scope.addChild($scope.root, fileArr);
 
@@ -90,17 +96,18 @@ gitignore.controller('uploadController',[ '$scope', '$upload', 'fileOrDir', func
 // file controller
 
 gitignore.controller('fileController', function($scope){
-	
+
 	$scope.checked = false;
 
-	$scope.addToGitIgnore = function(filePath){
+	$scope.addToGitIgnore = function(fileObj){
+		
 		$scope.checked = !$scope.checked;
 
 		if ($scope.checked === true) {
-			$scope.gitIgnoreSelections[filePath] = filePath;
+			$scope.gitIgnoreSelections[fileObj.fullPath] = fileObj.fullPath;
 		} else {
-			if ($scope.gitIgnoreSelections[filePath]) {
-				delete $scope.gitIgnoreSelections[filePath];
+			if ($scope.gitIgnoreSelections[fileObj.fullPath]) {
+				delete $scope.gitIgnoreSelections[fileObj.fullPath];
 			}
 		}
 	};

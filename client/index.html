@@ -38,10 +38,10 @@
 			<h2>Git Ignore Generator: </h2>
 
 			<div id='gitIgnoreFiles' >
-				<div id='gitIgnoreFile' ng-repeat='gitIgnoreSelection in gitIgnoreSelections'>
+				<div id='gitIgnoreFile' ng-repeat='(fullPath, path) in gitIgnoreSelections'>
 
-			  	<span class='ignoredFile' >### {{gitIgnoreSelection}} ###</span><br/>
-			  	{{gitIgnoreSelection}}
+			  	<span class='ignoredFile' >### {{fullPath}} ###</span><br/>
+			  	{{fullPath}}
 			  </div>
 		  </div>
 		  <div id='gap'></div>

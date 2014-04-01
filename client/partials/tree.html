@@ -1,11 +1,9 @@
 
-<input value="{{value.dir}}" type="checkbox" ng-click=addToGitIgnore(value.dir) ng-model='checked' ng-controller='fileController'>
+<input value="{{value.dir}}" type="checkbox" ng-click=addToGitIgnore(value) ng-model='checked' ng-controller='fileController'>
 <a href='#' ng-click='showNext = !showNext' class='fileAnchor'>
 	<img class='expand' src='/images/expand.png'>
 	{{value.dir}}
 </a>
-<ul ng-if='value.children.length' ng-show='showNext'>
-	<li class='filePath ' ng-repeat='value in value.children'  ng-include="'partials/tree.html'" >
-	</li>
+<ul ng-if='value.children.length' ng-show=showNext>
+	<li class='filePath ' ng-repeat='value in value.children'  ng-include="'partials/tree.html'" ></li>
 </ul>
-
