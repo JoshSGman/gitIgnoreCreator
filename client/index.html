@@ -20,6 +20,12 @@
 					$(this).find('img').toggleClass('expandRotate');
 					$(this).next().toggleClass('ng-hide');
 				})
+				$('body').on('click', '#showAll', function(e){
+					e.preventDefault();
+					$('#showAll').html() === 'Show All' ? $('#showAll').html('Hide All') : $('#showAll').html('Show All');
+					
+					$('.directoryUl').toggleClass('ng-hide');
+				})
 			})
 		</script>
 	</head>
@@ -38,7 +44,7 @@
 			</div>
 
 		  <ul class='filePaths'>
-		  	<div id='showAllDiv'><button id='showAll'>Show All</button></div>
+		  	<div id='showAllDiv'><button id='showAll' ng-show=nowWhat>Show All</button></div>
 		  	<li class='filePath' ng-repeat='value in root | filter:search:strict ' ng-include="'partials/tree.html'"></li>
 			</ul>
 
