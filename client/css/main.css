@@ -15,6 +15,7 @@ font-family: 'Aclonica', sans-serif;
 // extra colors used :
 
 rgba(71, 161, 212, 0.9) - light blue
+rgba(251, 170, 40, 1) - orangish
 */
 
 
@@ -32,26 +33,108 @@ html {
 
 body {
 	height: 100%;
-	font-family: 'Droid Sans Mono';
+	background-color: rgba(251, 170, 40, 1);
+	font-family: 'Metrophobic', sans-serif;
+	text-align: center;
+	overflow: auto;
 }
 
 h1 {
-	
+	text-align: center;
+	font-size: 3em;
+	margin-top: 30px;
+	text-decoration: underline;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
 }
 
 /* file drop section*/
 
-.dropFiles {
-	height: 250px;
-	width: 250px;
-	border: 1px solid red;
+#fileUploadDiv {
+	margin: auto auto;
+	background-color: white;
+	width: 1000px;
+	border-radius: 5px;
+	border: 5px solid black;
+	text-align: center;
+}
+
+#fileUploader{
+	border-bottom: 5px dashed black;
+	border-left: 5px dashed black;
+	border-right: 5px dashed black;
+	width: 600px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin: auto auto;
+}
+
+#fileUpload {
+	font-family: 'Droid Sans Mono';
+	padding: 10px;
+	margin-left: 40px;
 }
 
 #filePaths {
-
+	background-color: lightgrey;
+	text-align: left;
+	margin-top: 10px !important;
+	margin: auto;
+	min-height: 0;
+	overflow: auto;
+	border-radius: 5px;
+	height: 300px;
+	width: 600px;
 }
 
 .filePath {
+	height: 20px;
+	margin: auto auto;
+}
+
+.expand {
+	vertical-align: bottom;
+	height: 20px;
+	width: 20px;
+}
+
+.expandRotate {
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rtate(90deg);
+	-o-transform: rotate(90deg);
+}
+
+#gitIgnoreFileDiv{
+	background-color: lightgrey;
+	width: 600px;
+	margin: auto auto;
+}
+
+#gitIgnoreFile {
+	margin: auto auto;
+	text-align: left;
+	width: 500px;
+	margin-bottom: 10px;
+}
+
+.ignoreFile {
 
 }
 
+#gap {
+	height: 50px;
+}
+
+
+footer {
+	height: 50px;
+}

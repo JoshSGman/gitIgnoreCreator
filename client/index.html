@@ -4,26 +4,51 @@
 		<title>Git Ignore Generator</title>
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono|Revalia|Droid+Sans+Mono|Gochi+Hand|Fredoka+One|Metrophobic|Trocchi|Miltonian+Tattoo|Allerta|Aclonica' rel='stylesheet' type='text/css'>
-		<script src='/bower_components/jQuery/src/jquery.js'></script>
+		<script src='/bower_components/jQuery/dist/jquery.min.js'></script>
 		<script src='/bower_components/underscore/underscore.js'></script>
 		<script src='/bower_components/ng-file-upload/angular-file-upload-shim.min.js'></script>
 		<script src='/bower_components/angular/angular.min.js'></script>
 		<script src='/bower_components/ng-file-upload/angular-file-upload.min.js'></script> 
 		<script src='/scripts/gitignore.js'></script>
+		<script>
+			$(document).ready(function(){
+				$('body').on('click','.expand',function(e){
+					$(this).toggleClass('expandRotate')
+				});
+				$('body').on('click', '.fileAnchor', function(e){
+					e.preventDefault();
+					$(this).find('img').toggleClass('expandRotate');
+				})
+			})
+		</script>
 	</head>
 	<body ng-view ng-controller='mainController'>
-		<h1>The Git Ignore Generator</h1>
-		<br><br><br>
-		<div ng-controller="uploadController">
-		  <input type="text" ng-model="myModelObj">
-		  <input type="file" ng-file-select="onFileSelect($files)" multiple directory webkitdirectory mozdirectory>
-		  <div id='filePaths'>
-		  	<br>
-		  	<div class='filePath' ng-repeat='filePath in filePaths'><input name="fileCheck" value="{{filePath}}" type="checkbox" ng-click=addToGitIgnore(filePath) > : {{filePath}}</div>	
-			  <br/>
-			  <input type='submit' id='generateGitIgnore' value='Generate gitignore file' ng-hide='hideGenerator'>
-			  <div ng-repeat='gitIgnoreSelection in gitIgnoreSelections'>{{gitIgnoreSelection}}</div>
+		<h1>THE GIT IGNORE GENERATOR</h1>
+		<br>
+		<div ng-controller="uploadController" id='fileUploadDiv'>
+			<div id='fileUploader'>
+		  	<input type="file" id='fileUpload' ng-file-select="onFileSelect($files)" multiple directory webkitdirectory mozdirectory>
 			</div>
+		  <ul id='filePaths'>
+		  	<br>
+		  	<li class='filePath' ng-repeat='filePath in filePaths' ng-controller='fileController'>
+		  		<input name="fileCheck" value="{{filePath}}" type="checkbox" ng-click=addToGitIgnore(filePath) ng-model='checked'> 
+		  		<a href='#' ng-click=showChildren(filePath) class='fileAnchor'>
+		  		<img class='expand' src='/images/expand.png'> {{filePath}}
+		  		</a>
+		  	</li>	
+			  <br/>
+			</ul>
+			<h2>Git Ignore Generator: </h2>
+			<div id='gitIgnoreFiles'>
+				<div id='gitIgnoreFile' ng-repeat='gitIgnoreSelection in gitIgnoreSelections'>
+
+			  	<span class='ignoredFile' >### {{gitIgnoreSelection}} ###</span><br/>
+			  	{{gitIgnoreSelection}}
+			  </div>
+		  </div>
+		  <div id='gap'></div>
 		</div>
+		<footer></footer>
 	</body>
 </html>
