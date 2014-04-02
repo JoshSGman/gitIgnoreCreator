@@ -25,6 +25,7 @@
 					$('#showAll').html() === 'Show All' ? $('#showAll').html('Hide All') : $('#showAll').html('Show All');
 					
 					$('.directoryUl').toggleClass('ng-hide');
+					$('.expand').toggleClass('expandRotate');
 				})
 			})
 		</script>
@@ -43,7 +44,9 @@
 				<input id='searchDir' type='text' ng-model='search.$' placeholder='search for a file or directory'>
 			</div>
 
-		  <ul class='filePaths'>
+		  <ul class='filePaths' ng-file-drop="searchForPath($files)">
+		  	<img src='images/circle.png' id='circlePointer' ng-show=!nowWhat >
+		  	<h1 id='filePathHeader' ng-show=!nowWhat>DRAG AND DROP YOUR PROJECT DIRECTORY</h1>
 		  	<div id='showAllDiv'><button id='showAll' ng-show=nowWhat>Show All</button></div>
 		  	<li class='filePath' ng-repeat='value in root | filter:search:strict ' ng-include="'partials/tree.html'"></li>
 			</ul>

@@ -60,6 +60,12 @@ button:focus {
 	outline: 0;
 }
 
+#hatImg {
+	position: relative;
+	left: 0;
+	top: 0;
+}
+
 /* file drop section*/
 
 #fileUploadDiv {
@@ -108,6 +114,18 @@ button:focus {
 	border-radius: 5px;
 	height: 300px;
 	width: 600px;
+}
+
+#circlePointer {
+	display: block;
+	margin: auto auto;
+	margin-top: 10px;
+	height: 120px;
+}
+
+#filePathHeader {
+	margin-top: -5px;
+	text-decoration: none;
 }
 
 #showAllDiv {

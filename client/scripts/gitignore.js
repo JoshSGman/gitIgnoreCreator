@@ -73,6 +73,7 @@ gitignore.controller('uploadController',[ '$scope', '$upload', 'fileOrDir', func
 	// grab files from upload
 
 	$scope.onFileSelect = function($files) {
+
 		var rootDir = $files[0].webkitRelativePath.match(/.*\//);
 
 		_.each($files, function(file){
@@ -86,16 +87,14 @@ gitignore.controller('uploadController',[ '$scope', '$upload', 'fileOrDir', func
 			$scope.addChild($scope.root, fileArr);
 
 		});
-
-		console.log($scope.root);
 	};
 
 	$scope.gitIgnoreSelections = {};
 
 	$scope.addCustomIgnores = function(ignore) {
-		console.log('ignore: ', ignore);
 		$scope.gitIgnoreSelections[ignore] = ignore;
 	};
+
 
 }]);
 
